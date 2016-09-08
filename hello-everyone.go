@@ -5,8 +5,9 @@ import (
 	"os"
 )
 
-func addthis(a, b int) int {
-	return a + b
+func addthis(a int, b int) (temp int) {
+	temp = a + b
+	return
 	//comment
 }
 
