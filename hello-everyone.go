@@ -16,5 +16,5 @@ func main() {
 	var b = 2
 	var sum = addthis(a, b)
 	fmt.Println("Hello, everyone. How are you", sum)
-	fmt.Println(os.Getenv("GOSPATH"))
+	fmt.Println(os.Getenv("GOPATH"))
 }
