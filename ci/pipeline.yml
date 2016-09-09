@@ -1,0 +1,37 @@
+resource_types:
+- name: slack-notification
+  type: docker-image
+  source:
+    repository: cfcommunity/slack-notification-resource
+    tag: latest
+
+resources:
+- name: hello-go
+  type: git
+  source:
+    uri: https://github.com/jeffdecola/hello-go
+    branch: master
+- name: slack-alert
+  type: slack-notification
+  source:
+    url: {{slack_url}} 
+
+jobs:
+- name: test-app-hello
+  plan:
+  - get: hello-go
+    trigger: true
+  - task: tests
+    file: hello-go/build.yml
+    on_success:
+      put: slack-alert
+      params:
+        channel: '#general'
+        text: |
+          From hello-go: This works!
+    on_failure:
+      put: slack-alert
+      params:
+        channel: '#general'
+        text: |
+          From hello-go: Something went wrong!
