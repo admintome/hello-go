@@ -11,26 +11,26 @@ resources:
   source:
     uri: https://github.com/jeffdecola/hello-go
     branch: master
-- name: slack-alert
+- name: resource-slack-alert
   type: slack-notification
   source:
     url: {{slack_url}} 
 
 jobs:
-- name: test-app-hello
+- name: job-test-app-hello
   plan:
   - get: hello-go
     trigger: true
-  - task: tests
-    file: hello-go/build.yml
+  - task: task-unit-tests
+    file: hello-go/task-build.yml
     on_success:
-      put: slack-alert
+      put: resource-slack-alert
       params:
         channel: '#general'
         text: |
-          From hello-go: This works!
+          From hello-go: This works great!
     on_failure:
-      put: slack-alert
+      put: resource-slack-alert
       params:
         channel: '#general'
         text: |
