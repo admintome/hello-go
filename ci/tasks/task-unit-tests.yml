@@ -10,4 +10,4 @@ inputs:
 - name: hello-go
 
 run:
-  path: ./hello-go/ci/test.sh
+  path: ./hello-go/ci/scripts/test.sh
