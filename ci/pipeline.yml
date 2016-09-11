@@ -16,6 +16,12 @@ resources:
   source:
     uri: https://github.com/jeffdecola/hello-go
     branch: master
+- name: resource-dump-to-dockerhub
+  type: docker-image
+  source:
+    repository: concourse/git-resource
+    username: jeffdecola
+    password: {{dockerhub_password}}
 - name: resource-slack-alert
   type: slack-notification
   source:
@@ -41,8 +47,10 @@ jobs:
       passed: [job-test-app-hello]
     - put: resource-repo-status
       params: { state: "pending", commit: "hello-go" }
-    - task: task-unit-tests
+    - task: task-build
       file: hello-go/ci/tasks/task-build.yml
+    - put: resource-dump-to-dockerhub
+      params: {build: hello-go}
       on_success:
         put: resource-repo-status
         params: { state: "success", commit: "hello-go" }
