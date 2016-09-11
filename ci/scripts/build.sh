@@ -3,4 +3,4 @@
 set -e -x
 
 go build -o dist/hello-go ./hello-go  
-cp Dockerfile dist/Dockerfile
+cp hello-go/ci/Dockerfile dist/Dockerfile
