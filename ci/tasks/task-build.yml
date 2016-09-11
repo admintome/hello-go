@@ -10,7 +10,7 @@ inputs:
 - name: hello-go
 
 outputs:
-- name: bin
+- name: dist
 
 run:
   path: ./hello-go/ci/scripts/build.sh

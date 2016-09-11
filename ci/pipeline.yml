@@ -19,7 +19,7 @@ resources:
 - name: resource-dump-to-dockerhub
   type: docker-image
   source:
-    repository: concourse/git-resource
+    repository: jeffdecola/hello-go
     username: jeffdecola
     password: {{dockerhub_password}}
 - name: resource-slack-alert
@@ -50,7 +50,7 @@ jobs:
     - task: task-build
       file: hello-go/ci/tasks/task-build.yml
     - put: resource-dump-to-dockerhub
-      params: {build: hello-go}
+      params: {build: dist}
       on_success:
         put: resource-repo-status
         params: { state: "success", commit: "hello-go" }
