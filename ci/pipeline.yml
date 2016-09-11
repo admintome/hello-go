@@ -59,7 +59,7 @@ jobs:
           params:
             channel: '#general'
             text: |
-            From hello-go: This works great!
+              From hello-go: This works great!
       on_failure:
         put: resource-repo-status
         params: { state: "failure", commit: "hello-go" }

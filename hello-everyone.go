@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"time"
 )
 
 func addthis(a int, b int) (temp int) {
@@ -12,9 +13,13 @@ func addthis(a int, b int) (temp int) {
 }
 
 func main() {
-	var a = 3
-	var b = 2
-	var sum = addthis(a, b)
-	fmt.Println("Hello, everyone. How are you today", sum)
-	fmt.Println(os.Getenv("GOPATH"))
+	var a = 0
+	var b = 1
+	for {
+		a = a + 1
+		var sum = addthis(a, b)
+		fmt.Println("Hello, everyone. How are you today", sum)
+		fmt.Println(os.Getenv("GOPATH"))
+		time.Sleep(3000 * time.Millisecond)
+	}
 }
