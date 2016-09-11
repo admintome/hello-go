@@ -1,3 +1,3 @@
 FROM alpine
-COPY hello-go /
+COPY bin/hello-go /
 CMD /hello-go
