@@ -2,7 +2,5 @@
 
 set -e -x
 
-pushd hello-go
-  go test -v -cover
-popd
+go test -v -cover ./hello-go
 
