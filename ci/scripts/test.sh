@@ -3,6 +3,6 @@
 set -e -x
 
 pushd hello-go
-  go test -coverprofile=coverage.out 
+  go test -v -cover
 popd
 

@@ -31,10 +31,18 @@ jobs:
   plan:
     - get: hello-go
       trigger: true
+    - task: task-unit-tests
+      file: hello-go/ci/tasks/task-unit-tests.yml
+
+- name: job-build
+  plan:
+    - get: hello-go
+      trigger: true
+      passed: [job-test-app-hello]
     - put: resource-repo-status
       params: { state: "pending", commit: "hello-go" }
     - task: task-unit-tests
-      file: hello-go/task-build.yml
+      file: hello-go/ci/tasks/task-build.yml
       on_success:
         put: resource-repo-status
         params: { state: "success", commit: "hello-go" }
