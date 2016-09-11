@@ -3,6 +3,7 @@
 set -e -x
 
 pushd hello-go
-  go build -o bin/hello-go .  
+  cp Dockerfile dist/Dockerfile
+  go build -o dist/hello-go .  
 popd
 
