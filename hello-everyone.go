@@ -18,7 +18,7 @@ func main() {
 	for {
 		a = a + 1
 		var sum = addthis(a, b)
-		fmt.Println("Hello, everyone. How are you today", sum)
+		fmt.Println("Hello, everyone. How are you today.  Are you doing well.", sum)
 		fmt.Println(os.Getenv("GOPATH"))
 		time.Sleep(3000 * time.Millisecond)
 	}
