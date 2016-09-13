@@ -42,6 +42,8 @@ jobs:
         channel: '#general'
         text: |
           From hello-go: Starting hello-go in concourse.
+    - put: resource-repo-status
+      params: { state: "pending", commit: "hello-go" }
     - task: task-unit-tests
       file: hello-go/ci/tasks/task-unit-tests.yml
 
@@ -50,8 +52,6 @@ jobs:
     - get: hello-go
       trigger: true
       passed: [job-test-app-hello]
-    #- put: resource-repo-status
-    #  params: { state: "pending", commit: "hello-go" }
     - task: task-build
       file: hello-go/ci/tasks/task-build.yml
     - put: resource-dump-to-dockerhub
