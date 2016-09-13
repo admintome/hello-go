@@ -6,4 +6,4 @@
 [![Go Report Card](https://goreportcard.com/badge/jeffdecola/hello-go)](https://goreportcard.com/report/jeffdecola/hello-go)
 [![GoDoc](https://godoc.org/github.com/JeffDeCola/hello-go?status.svg)](https://godoc.org/github.com/JeffDeCola/hello-go)
 
-`hello-go` is used to test unit testing with concourse using marathon and mesos.
+`hello-go` is used to test unit testing and build (to dockerhub) with concourse ci using marathon and a mesos cluster.
