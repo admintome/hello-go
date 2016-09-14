@@ -1,3 +1,45 @@
+# hello-go pipeline
+
+jobs:
+- name: job-test-app-hello
+  plan:
+    - get: hello-go
+      trigger: true
+    - put: resource-slack-alert
+      params:
+        channel: '#jeff-builds'
+        text: "From hello-go: Starting hello-go in concourse."
+    - put: resource-repo-status
+      params: { state: "pending", commit: "hello-go" }
+    - task: task-unit-tests
+      file: hello-go/ci/tasks/task-unit-tests.yml
+
+- name: job-build
+  plan:
+    - get: hello-go
+      trigger: true
+      passed: [job-test-app-hello]
+    - task: task-build
+      file: hello-go/ci/tasks/task-build.yml
+    - put: resource-dump-to-dockerhub
+      params: {build: dist}
+      on_success:
+        do:
+        - put: resource-repo-status
+          params: { state: "success", commit: "hello-go" }
+        - put: resource-slack-alert
+          params:
+            channel: '#jeff-builds'
+            text: "From hello-go: This works great!"
+      on_failure:
+        do:
+        - put: resource-repo-status
+          params: { state: "failure", commit: "hello-go" }
+        - put: resource-slack-alert
+          params:
+            channel: '#jeff-builds'
+            text: "From hello-go: Something went wrong. This stinks!"
+
 resource_types:
 - name: slack-notification
   type: docker-image
@@ -32,45 +74,3 @@ resources:
     repository: jeffdecola/hello-go 
     access_token: {{repo_github_token}}
 
-jobs:
-- name: job-test-app-hello
-  plan:
-    - get: hello-go
-      trigger: true
-    - put: resource-slack-alert
-      params:
-        channel: '#general'
-        text: |
-          From hello-go: Starting hello-go in concourse.
-    - put: resource-repo-status
-      params: { state: "pending", commit: "hello-go" }
-    - task: task-unit-tests
-      file: hello-go/ci/tasks/task-unit-tests.yml
-
-- name: job-build
-  plan:
-    - get: hello-go
-      trigger: true
-      passed: [job-test-app-hello]
-    - task: task-build
-      file: hello-go/ci/tasks/task-build.yml
-    - put: resource-dump-to-dockerhub
-      params: {build: dist}
-      on_success:
-        put: resource-repo-status
-        params: { state: "success", commit: "hello-go" }
-        ensure:
-          put: resource-slack-alert
-          params:
-            channel: '#general'
-            text: |
-              From hello-go: This works great!
-      on_failure:
-        put: resource-repo-status
-        params: { state: "failure", commit: "hello-go" }
-        ensure:
-          put: resource-slack-alert
-          params:
-            channel: '#general'
-            text: |
-              From hello-go: Something went wrong. This stinks!
