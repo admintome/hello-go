@@ -6,16 +6,16 @@
 [![GoDoc](https://godoc.org/github.com/JeffDeCola/hello-go?status.svg)](https://godoc.org/github.com/JeffDeCola/hello-go)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
 
-`hello-go` will create and push a simple dockerhub image (that continously loops every 3 seconds) to dockerhub.
+_`hello-go` will create and push a simple dockerhub image to dockerhub.  It will print "hello everyone: Count is #" every 3 seconds._
 
-The docker image is useful in marathon and mesos testing when a long running app is needed.
+The docker image is useful in marathon and mesos testing where a long running app is needed.
 
 To automate the creation of the docker image, a concourse ci pipeline will unit test, build and push the docker image to dockerhub.  
 
-`hello-go` also contains a few extra concourse resources that are used in the pipeline:
+`hello-go` also contains a few extra concourse resources that in the pipeline:
 
   * A resource that will notify slack on your progress.
   * A resource that will update your git status.
   * A resource [`resource-template`](https://github.com/JeffDeCola/resource-template) that can be used as a starting point/template for creating other concourse ci resources.
 
-These can easily be removed from the pipeline.
+These resources can be easily removed from the pipeline.
