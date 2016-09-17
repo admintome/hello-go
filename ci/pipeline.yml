@@ -1,4 +1,4 @@
-# hello-go pipeline
+# hello-go pipeline.yml
 
 jobs:
 - name: job-unit-tests
@@ -10,7 +10,7 @@ jobs:
         channel: '#jeff-builds'
         text: "From hello-go: STARTED job-unit-tests in concourse ci."
     - put: resource-repo-status
-      params: { state: "pending", commit: "hello-go" }
+      params: { state: "pending", description: "STARTED job-unit-tests in concourse ci.", commit: "hello-go" }
     - task: task-unit-tests
       file: hello-go/ci/tasks/task-unit-tests.yml
       on_success:
@@ -19,12 +19,16 @@ jobs:
           params:
             channel: '#jeff-builds'
             text: "From hello-go: PASSED job-unit-tests in concourse ci."
+        - put: resource-repo-status
+          params: { state: "pending", description: "PASSED job-unit-tests in concourse ci", commit: "hello-go" }
       on_failure:
         do:
         - put: resource-slack-alert
           params:
             channel: '#jeff-builds'
             text: "From hello-go: FAILED job-unit-tests in concourse ci."
+        - put: resource-repo-status
+          params: { state: "failure", description: "FAILED job-unit-tests in concourse ci.", commit: "hello-go" }
 
 - name: job-build
   plan:
@@ -35,26 +39,28 @@ jobs:
       params:
         channel: '#jeff-builds'
         text: "From hello-go: STARTED job-build in concourse ci."
+    - put: resource-repo-status
+      params: { state: "pending", description: "STARTED job-build in concourse ci.", commit: "hello-go" }
     - task: task-build
       file: hello-go/ci/tasks/task-build.yml
     - put: resource-dump-to-dockerhub
       params: {build: dist}
       on_success:
         do:
-        - put: resource-repo-status
-          params: { state: "success", commit: "hello-go" }
         - put: resource-slack-alert
           params:
             channel: '#jeff-builds'
             text: "From hello-go: PASSED job-build in concourse ci."
+        - put: resource-repo-status
+          params: { state: "success", description: "PASSED job-build in concourse ci.", commit: "hello-go" }
       on_failure:
         do:
-        - put: resource-repo-status
-          params: { state: "failure", commit: "hello-go" }
         - put: resource-slack-alert
           params:
             channel: '#jeff-builds'
             text: "From hello-go: FAILED job-build in concourse ci."
+        - put: resource-repo-status
+          params: { state: "failure", description: "FAILED job-build in concourse ci.", commit: "hello-go" }
 
 resource_types:
 - name: slack-notification
