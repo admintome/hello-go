@@ -1,4 +1,4 @@
-// add.go
+// hello-go add.go
 
 package count
 

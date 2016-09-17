@@ -1,4 +1,4 @@
-// main.go
+// hello-go main.go
 
 package main
 
@@ -9,7 +9,7 @@ import (
 	"github.com/JeffDeCola/hello-go/count"
 )
 
-// Looping forever - For testing concourse
+// Looping forever - For testing marathon and mesos
 // The function Addthis is not needed, but I put it in for fun.
 func main() {
 	var a = 0

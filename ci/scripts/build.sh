@@ -1,5 +1,5 @@
 #!/bin/bash
-#build.sh
+# hello-go build.sh
 
 set -e -x
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-#unit-test.sh
+# hello-go unit-test.sh
 
 set -e -x
 
