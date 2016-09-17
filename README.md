@@ -7,14 +7,15 @@
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
 
 _`hello-go` uses concourse ci to create and push a long running "hello-world" docker image to dockerhub._
-  
+
 It will print "Hello everyone, count is: #" every 3 seconds.
 
 The docker image is useful in marathon and mesos testing where a long running app is needed.
 
 ## COUNCOURSE CI
 
-To automate the creation of the docker image, a concourse ci pipeline will unit test, build and push the docker image to dockerhub.  
+To automate the creation of the docker image, a concourse ci pipeline will unit test,
+build and push the docker image to dockerhub.
 
 ![IMAGE - hello-go concourse ci piepline - IMAGE](docs/hello-go-pipeline.jpg)
 
@@ -22,9 +23,10 @@ To automate the creation of the docker image, a concourse ci pipeline will unit 
 
 `hello-go` also contains a few extra concourse resources in the pipeline:
 
-  * A resource that will notify slack on your progress.
-  * A resource that will update your git status.
-  * A resource [`resource-template`](https://github.com/JeffDeCola/resource-template) that can be used as a starting point/template for creating other concourse ci resources.
+* A resource that will notify slack on your progress.
+* A resource that will update your git status.
+* A resource [`resource-template`](https://github.com/JeffDeCola/resource-template) that can be used as a starting point/template
+for creating other concourse ci resources.
 
 These resources can be easily removed from the pipeline.
 
