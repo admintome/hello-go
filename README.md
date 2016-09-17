@@ -11,7 +11,7 @@ docker image to dockerhub._
 
 Written in go, every 3 seconds it will print:
 
-&nbsp;&nbsp;&nbsp;&nbsp;`"Hello everyone, count is: #"`
+`"Hello everyone, count is: #"`
 
 The docker image is useful in marathon and mesos testing where a long running
 app is needed.
