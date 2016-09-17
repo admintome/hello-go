@@ -1,28 +1,44 @@
 # hello-go pipeline
 
 jobs:
-- name: job-test-app-hello
+- name: job-unit-tests
   plan:
     - get: hello-go
       trigger: true
     - put: resource-slack-alert
       params:
         channel: '#jeff-builds'
-        text: "From hello-go: Starting hello-go in concourse."
+        text: "From hello-go: STARTED job-unit-tests in concourse ci."
     - put: resource-repo-status
       params: { state: "pending", commit: "hello-go" }
     - task: task-unit-tests
       file: hello-go/ci/tasks/task-unit-tests.yml
+      on_success:
+        do:
+        - put: resource-slack-alert
+          params:
+            channel: '#jeff-builds'
+            text: "From hello-go: PASSED job-unit-tests in concourse ci."
+      on_failure:
+        do:
+        - put: resource-slack-alert
+          params:
+            channel: '#jeff-builds'
+            text: "From hello-go: FAILED job-unit-tests in concourse ci."
 
 - name: job-build
   plan:
     - get: hello-go
       trigger: true
-      passed: [job-test-app-hello]
-    - put: resource-dump-to-dockerhub
-      params: {build: dist}
+      passed: [job-unit-tests]
+    - put: resource-slack-alert
+      params:
+        channel: '#jeff-builds'
+        text: "From hello-go: STARTED job-build in concourse ci."
     - task: task-build
       file: hello-go/ci/tasks/task-build.yml
+    - put: resource-dump-to-dockerhub
+      params: {build: dist}
       on_success:
         do:
         - put: resource-repo-status
@@ -30,7 +46,7 @@ jobs:
         - put: resource-slack-alert
           params:
             channel: '#jeff-builds'
-            text: "From hello-go: This works great!"
+            text: "From hello-go: PASSED job-build in concourse ci."
       on_failure:
         do:
         - put: resource-repo-status
@@ -38,7 +54,7 @@ jobs:
         - put: resource-slack-alert
           params:
             channel: '#jeff-builds'
-            text: "From hello-go: Something went wrong. This stinks!"
+            text: "From hello-go: FAILED job-build in concourse ci."
 
 resource_types:
 - name: slack-notification
