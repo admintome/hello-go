@@ -6,7 +6,7 @@
 [![GoDoc](https://godoc.org/github.com/JeffDeCola/hello-go?status.svg)](https://godoc.org/github.com/JeffDeCola/hello-go)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
 
-_`hello-go` uses concourse ci to create and push a long running "hello-world"
+`hello-go` _uses concourse ci to create and push a long running "hello-world"
 docker image to dockerhub._
 
 Written in go, it will print "Hello everyone, count is: #" every 3 seconds.
@@ -27,7 +27,7 @@ build and push the docker image to dockerhub.
 
 * A resource that will notify slack on your progress.
 * A resource that will update your git status.
-* A resource [`resource-template`](https://github.com/JeffDeCola/resource-template) 
+* A resource [`resource-template`](https://github.com/JeffDeCola/resource-template)
 that can be used as a starting point/template for creating other concourse ci resources.
 
 These resources can be easily removed from the pipeline.
