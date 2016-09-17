@@ -9,7 +9,9 @@
 `hello-go` _uses concourse ci to create and push a long running "hello-world"
 docker image to dockerhub._
 
-Written in go, it will print "Hello everyone, count is: #" every 3 seconds.
+Written in go, every 3 seconds it will print:
+
+&nbsp;&nbsp;&nbsp;&nbsp;`"Hello everyone, count is: #"`
 
 The docker image is useful in marathon and mesos testing where a long running
 app is needed.
