@@ -16,6 +16,10 @@ Written in go, every 3 seconds it will print:
 The docker image is useful in marathon and mesos testing where a long running
 app is needed.
 
+## RUN
+
+`go run hello-go`
+
 ## COUNCOURSE CI
 
 To automate the creation of the docker image, a concourse ci pipeline will unit test,

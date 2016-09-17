@@ -1,4 +1,4 @@
-# Dockerfile used to build docker image on concourse ci
+# hello-go Dockerfile used to build docker image on concourse ci
 
 FROM alpine
 COPY hello-go /
