@@ -16,9 +16,9 @@ Written in go, every 3 seconds it will print:
 The docker image is useful in marathon and mesos testing where a long running
 app is needed.
 
-## RUN
+## RUNNING FROM DOCKERHUB
 
-`go run hello-go`
+`docker run jeffdeCola/hello-go`
 
 ## COUNCOURSE CI
 
@@ -33,7 +33,7 @@ build and push the docker image to dockerhub.
 
 * A resource that will notify slack on your progress.
 * A resource that will update your git status.
-* A resource [`resource-template`](https://github.com/JeffDeCola/resource-template)
-that can be used as a starting point/template for creating other concourse ci resources.
+* A resource [`resource-template`](https://github.com/JeffDeCola/resource-template) 
+  that can be used as a starting point/template for creating other concourse ci resources.
 
 These resources can be easily removed from the pipeline.
