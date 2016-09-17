@@ -9,7 +9,7 @@
 `hello-go` _uses concourse ci to create and push a long running "hello-world"
 docker image to dockerhub._
 
-Written in go, every 3 seconds it will print:
+Written in go, every 3 seconds `hello-go` will print:
 
 ```bash
 Hello everyone, count is: 1
@@ -33,6 +33,9 @@ To automate the creation of the docker image, a concourse ci pipeline will unit 
 build and push the docker image to dockerhub.
 
 ![IMAGE - hello-go concourse ci piepline - IMAGE](docs/hello-go-pipeline.jpg)
+
+A /ci/.credentials file needs to be created for your slack_url, repo_github_token,
+and dockerhub_password:
 
 ## OTHER RESOURCES IN PIPELINE
 
