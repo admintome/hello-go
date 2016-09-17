@@ -6,9 +6,9 @@
 [![GoDoc](https://godoc.org/github.com/JeffDeCola/hello-go?status.svg)](https://godoc.org/github.com/JeffDeCola/hello-go)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
 
-_`hello-go` will create and push a simple docker image to dockerhub._
+_`hello-go` uses concourse ci to create and push a long running "hello-world" docker image to dockerhub._
   
-It will print "hello everyone: Count is #" every 3 seconds.
+It will print "Hello everyone, count is: #" every 3 seconds.
 
 The docker image is useful in marathon and mesos testing where a long running app is needed.
 
