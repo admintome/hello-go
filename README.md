@@ -16,6 +16,8 @@ The docker image is useful in marathon and mesos testing where a long running ap
 
 To automate the creation of the docker image, a concourse ci pipeline will unit test, build and push the docker image to dockerhub.  
 
+![IMAGE - hello-go concourse ci piepline - IMAGE](docs/hello-go-pipeline.jpg)
+
 ## OTHER RESOURCES IN PIPELINE
 
 `hello-go` also contains a few extra concourse resources in the pipeline:
@@ -25,3 +27,4 @@ To automate the creation of the docker image, a concourse ci pipeline will unit 
   * A resource [`resource-template`](https://github.com/JeffDeCola/resource-template) that can be used as a starting point/template for creating other concourse ci resources.
 
 These resources can be easily removed from the pipeline.
+
