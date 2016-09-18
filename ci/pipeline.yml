@@ -44,7 +44,7 @@ jobs:
     - task: task-build
       file: hello-go/ci/tasks/task-build.yml
     - put: resource-dump-to-dockerhub
-      params: {build: dist}
+      params: { build: "dist"}
       on_success:
         do:
         - put: resource-slack-alert

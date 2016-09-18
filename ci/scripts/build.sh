@@ -28,3 +28,10 @@ cp ci/Dockerfile dist/Dockerfile
 # Check
 echo "List whats in the /dist directory"
 ls -lat dist
+
+# Move to $GOPATH
+cp -R ./dist $GOPATH/.
+cd $GOPATH
+# Check
+echo "List whats in the /dist directory"
+ls -lat dist
