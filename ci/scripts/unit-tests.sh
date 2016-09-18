@@ -3,7 +3,11 @@
 
 set -e -x
 
+# Setup the gopath and directory structure
 export GOPATH=$PWD
+echo "The $PWD and $GOPATH IS is: " $PWD
+tree
+
 mkdir -p src/github.com/JeffDeCola/
 cp -R ./hello-go src/github.com/JeffDeCola/.
 
