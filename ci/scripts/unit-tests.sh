@@ -1,9 +1,12 @@
 #!/bin/bash
 # hello-go unit-test.sh
 
-export GOPATH=$PWD
-
 set -e -x
 
-go test -v -cover ./...
+export GOPATH=$PWD
+mkdir -p src/github.com/JeffDeCola/
+cp -R ./hello-go src/github.com/JeffDeCola/.
+
+go test -v -cover github.com/JeffDeCola/hello-go/...
+
 
