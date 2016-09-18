@@ -26,13 +26,13 @@ marathon and mesos testing where a long running app is needed.
 
 ## RUN
 
-### From Dockerhub
+### Run image from dockerhub
 
 ```bash
 docker run jeffdeCola/hello-go
 ```
 
-### From command line
+### From the command line
 
 ```bash
 go run main.go
@@ -65,7 +65,7 @@ to push a docker image to dockerhub.
 * A resource (_resource-slack-alert_) that will notify slack on your progress.
 * A resource (_resource-repo-status_) that will update your git status for that
   particular commit.
-* A resource [(_`resource-template`_)](https://github.com/JeffDeCola/resource-template)
+* A resource ([_`resource-template`_](https://github.com/JeffDeCola/resource-template))
   that can be used as a starting point and template for creating other concourse
   ci resources.
 
