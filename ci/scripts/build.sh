@@ -12,8 +12,8 @@ echo "List whats in the current directory"
 ls -lat 
 
 # Now we must move our code from the current directory ./hello-go to $GOPATH/src/github.com/JeffDeCola/hello-go
-# mkdir -p src/github.com/JeffDeCola/
-# cp -R ./hello-go src/github.com/JeffDeCola/.
+mkdir -p src/github.com/JeffDeCola/
+cp -R ./hello-go src/github.com/JeffDeCola/.
 
 # All set with everything in the right place
 echo "Gopath is: " $GOPATH
