@@ -18,20 +18,28 @@ Hello everyone, count is: 3
 ...
 ```
 
-`hello-go' is useful to show how to use concourse ci.
+`hello-go` is useful to show how to use concourse ci.
 
-The `hello-go` ![Docker image](https://hub.docker.com/r/jeffdecola/hello-go/) is useful in marathon and mesos testing where a long running
+The `hello-go` ![docker image](https://hub.docker.com/r/jeffdecola/hello-go) is useful in marathon and mesos testing where a long running
 app is needed.
 
-## RUNNING FROM DOCKERHUB
+## RUN
+
+### From Dockerhub
 
 ```bash
 docker run jeffdeCola/hello-go
 ```
 
+### From command line
+
+```bash
+go run main.go
+```
+
 ## BUILT USING CONCOURSE CI
 
-To automate the creation of the docker image, a concourse ci pipeline will unit test,
+To automate the creation of the `hello-go` docker image, a concourse ci pipeline will unit test,
 build and push the docker image to dockerhub.
 
 ![IMAGE - hello-go concourse ci piepline - IMAGE](docs/hello-go-pipeline.jpg)
@@ -45,12 +53,17 @@ Use fly to upload the the pipeline file _ci/pipline.yml_ to concourse:
 fly -t ci set-pipeline -p hello-go -c ci/pipeline.yml --load-vars-from ci/.credentials.yml
 ```
 
-## OTHER RESOURCES IN PIPELINE
+## CONCOURSE RESOURCES IN PIPELINE
 
-`hello-go` also contains a few extra concourse resources in the pipeline:
+The resource-dump-to-dockerhub uses the resource type
+![docker-image](https://github.com/concourse/docker-image-resource)
+to push a docker image to dockerhub.
 
-* A resource that will notify slack on your progress.
-* A resource that will update your git status.
+As can be seen in the pieline diagram `hello-go` also contains a few extra concourse
+resources:
+
+* A resource (resource-slack-alert) that will notify slack on your progress.
+* A resource (resource-repo-status) that will update your git status.
 * A resource [`resource-template`](https://github.com/JeffDeCola/resource-template)
   that can be used as a starting point/template for creating other concourse
   ci resources.
