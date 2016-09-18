@@ -13,7 +13,7 @@ cp -R ./hello-go src/github.com/JeffDeCola/.
 # All set with everything in the right place
 echo "Gopath is: " $GOPATH
 echo "pwd is: " $PWD
-cd github.com/JeffDeCola/hello-go
+cd src/github.com/JeffDeCola/hello-go
 
 $ RUN unit_tests
 go test -v -cover ./...

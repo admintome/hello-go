@@ -18,8 +18,8 @@ Hello everyone, count is: 3
 ...
 ```
 
-`hello-go` is useful to show how to use concourse ci to automate the creation of a
-docker image.
+`hello-go` shows how a simple "hello-world" program uses concourse ci to
+automate the creation and push of a docker image to dockerhub.
 
 The `hello-go` [docker image](https://hub.docker.com/r/jeffdecola/hello-go) is useful in
 marathon and mesos testing where a long running app is needed.
