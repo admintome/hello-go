@@ -18,7 +18,9 @@ Hello everyone, count is: 3
 ...
 ```
 
-The docker image is useful in marathon and mesos testing where a long running
+`hello-go' is useful to show how to use concourse ci.
+
+The `hello-go` ![Docker image](https://hub.docker.com/r/jeffdecola/hello-go/) is useful in marathon and mesos testing where a long running
 app is needed.
 
 ## RUNNING FROM DOCKERHUB
@@ -27,15 +29,21 @@ app is needed.
 docker run jeffdeCola/hello-go
 ```
 
-## COUNCOURSE CI
+## BUILT USING CONCOURSE CI
 
 To automate the creation of the docker image, a concourse ci pipeline will unit test,
 build and push the docker image to dockerhub.
 
 ![IMAGE - hello-go concourse ci piepline - IMAGE](docs/hello-go-pipeline.jpg)
 
-A /ci/.credentials file needs to be created for your slack_url, repo_github_token,
-and dockerhub_password:
+A _ci/.credentials.yml_ file needs to be created for your _slack_url_, _repo_github_token_,
+and _dockerhub_password_.
+
+Use fly to upload the the pipeline file _ci/pipline.yml_ to concourse:
+
+```bash
+fly -t ci set-pipeline -p hello-go -c ci/pipeline.yml --load-vars-from ci/.credentials.yml
+```
 
 ## OTHER RESOURCES IN PIPELINE
 
