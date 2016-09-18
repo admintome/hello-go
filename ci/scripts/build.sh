@@ -8,6 +8,8 @@ set -e -x
 
 # Setup the gopath to were ./hello-go is. 
 export GOPATH=$PWD
+echo "List whats in the current directory"
+ls -lat 
 
 # Now we must move our code from the current directory ./hello-go to $GOPATH/src/github.com/JeffDeCola/hello-go
 # mkdir -p src/github.com/JeffDeCola/
