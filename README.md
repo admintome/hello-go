@@ -20,7 +20,7 @@ Hello everyone, count is: 3
 
 `hello-go` is useful to show how to use concourse ci.
 
-The `hello-go` ![docker image](https://hub.docker.com/r/jeffdecola/hello-go) is useful in marathon and mesos testing where a long running
+The `hello-go` [docker image](https://hub.docker.com/r/jeffdecola/hello-go) is useful in marathon and mesos testing where a long running
 app is needed.
 
 ## RUN
@@ -55,16 +55,16 @@ fly -t ci set-pipeline -p hello-go -c ci/pipeline.yml --load-vars-from ci/.crede
 
 ## CONCOURSE RESOURCES IN PIPELINE
 
-The resource-dump-to-dockerhub uses the resource type
-![docker-image](https://github.com/concourse/docker-image-resource)
+The _resource-dump-to-dockerhub_ uses the resource type
+[docker-image](https://github.com/concourse/docker-image-resource)
 to push a docker image to dockerhub.
 
 As can be seen in the pieline diagram `hello-go` also contains a few extra concourse
 resources:
 
-* A resource (resource-slack-alert) that will notify slack on your progress.
-* A resource (resource-repo-status) that will update your git status.
-* A resource [`resource-template`](https://github.com/JeffDeCola/resource-template)
+* A resource (_resource-slack-alert_) that will notify slack on your progress.
+* A resource (_resource-repo-status_) that will update your git status.
+* A resource [_`resource-template`_](https://github.com/JeffDeCola/resource-template)
   that can be used as a starting point/template for creating other concourse
   ci resources.
 
