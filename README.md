@@ -18,10 +18,11 @@ Hello everyone, count is: 3
 ...
 ```
 
-`hello-go` is useful to show how to use concourse ci.
+`hello-go` is useful to show how to use concourse ci to automate the creation of a
+docker image.
 
-The `hello-go` [docker image](https://hub.docker.com/r/jeffdecola/hello-go) is useful in marathon and mesos testing where a long running
-app is needed.
+The `hello-go` [docker image](https://hub.docker.com/r/jeffdecola/hello-go) is useful in
+marathon and mesos testing where a long running app is needed.
 
 ## RUN
 
@@ -39,8 +40,8 @@ go run main.go
 
 ## BUILT USING CONCOURSE CI
 
-To automate the creation of the `hello-go` docker image, a concourse ci pipeline will unit test,
-build and push the docker image to dockerhub.
+To automate the creation of the `hello-go` docker image, a concourse ci pipeline
+will unit test, build and push the docker image to dockerhub.
 
 ![IMAGE - hello-go concourse ci piepline - IMAGE](docs/hello-go-pipeline.jpg)
 
@@ -55,17 +56,17 @@ fly -t ci set-pipeline -p hello-go -c ci/pipeline.yml --load-vars-from ci/.crede
 
 ## CONCOURSE RESOURCES IN PIPELINE
 
-The _resource-dump-to-dockerhub_ uses the resource type
+As seen in the pipeline diagram, the _resource-dump-to-dockerhub_ uses the resource type
 [docker-image](https://github.com/concourse/docker-image-resource)
 to push a docker image to dockerhub.
 
-As can be seen in the pieline diagram `hello-go` also contains a few extra concourse
-resources:
+`hello-go` also contains a few extra concourse resources:
 
 * A resource (_resource-slack-alert_) that will notify slack on your progress.
-* A resource (_resource-repo-status_) that will update your git status.
-* A resource [_`resource-template`_](https://github.com/JeffDeCola/resource-template)
-  that can be used as a starting point/template for creating other concourse
+* A resource (_resource-repo-status_) that will update your git status for that
+  particular commit.
+* A resource [(_`resource-template`_)](https://github.com/JeffDeCola/resource-template)
+  that can be used as a starting point and template for creating other concourse
   ci resources.
 
 These resources can be easily removed from the pipeline.
