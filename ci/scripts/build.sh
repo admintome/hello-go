@@ -23,3 +23,7 @@ go build -o dist/hello-go ./main.go
 
 # cp the Dockerfile into /dist
 cp hello-go/ci/Dockerfile dist/Dockerfile
+
+# Check
+echo "List whats in the /dist directory"
+ls -lat dist

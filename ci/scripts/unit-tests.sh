@@ -15,7 +15,7 @@ echo "Gopath is: " $GOPATH
 echo "pwd is: " $PWD
 cd src/github.com/JeffDeCola/hello-go
 
-$ RUN unit_tests
+# RUN unit_tests
 go test -v -cover ./...
 
 

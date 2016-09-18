@@ -22,7 +22,7 @@ Hello everyone, count is: 3
 automate the creation and push of a docker image to dockerhub.
 
 The `hello-go` [docker image](https://hub.docker.com/r/jeffdecola/hello-go) is useful in
-marathon and mesos testing where a long running app is needed.
+marathon and mesos testing where a simple long running app is needed.
 
 ## RUN
 
