@@ -3,28 +3,18 @@
 
 set -e -x
 
-# Everyting should already be set up. Meaning I have a $GOPATH/src/github.com/JeffDeCola/hello-go
-# Check that
-
-# Setup the gopath to were ./hello-go is. 
-export GOPATH=$PWD
+#The code is located in /hello-go
 echo "List whats in the current directory"
 ls -lat 
 
-# Now we must move our code from the current directory ./hello-go to $GOPATH/src/github.com/JeffDeCola/hello-go
-mkdir -p src/github.com/JeffDeCola/
-cp -R ./hello-go src/github.com/JeffDeCola/.
+# Enter the directory
+cd hello-go
 
-# All set with everything in the right place
-echo "Gopath is: " $GOPATH
-echo "pwd is: " $PWD
-cd src/github.com/JeffDeCola/hello-go
-
-# put the binary in /dist
+# put the binary hello-go filename in /dist
 go build -o dist/hello-go ./main.go
 
 # cp the Dockerfile into /dist
-cp hello-go/ci/Dockerfile dist/Dockerfile
+cp ci/Dockerfile dist/Dockerfile
 
 # Check
 echo "List whats in the /dist directory"

@@ -3,16 +3,18 @@
 
 set -e -x
 
-# Setup the gopath to were ./hello-go is. 
-export GOPATH=$PWD
+# The code is located in /hello-go
 echo "List whats in the current directory"
 ls -lat 
+
+# Setup the gopath based on current directory.
+export GOPATH=$PWD
 
 # Now we must move our code from the current directory ./hello-go to $GOPATH/src/github.com/JeffDeCola/hello-go
 mkdir -p src/github.com/JeffDeCola/
 cp -R ./hello-go src/github.com/JeffDeCola/.
 
-# All set with everything in the right place
+# All set and everything is in the right place for go
 echo "Gopath is: " $GOPATH
 echo "pwd is: " $PWD
 cd src/github.com/JeffDeCola/hello-go
