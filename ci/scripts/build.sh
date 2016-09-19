@@ -29,10 +29,11 @@ cp ci/Dockerfile dist/Dockerfile
 echo "List whats in the /dist directory"
 ls -lat dist
 
-# Move to $GOPATH - BECAUSE THIS IS WHERE the resource type docker-image works. 
+# Move what you need to $GOPATH - BECAUSE THIS IS WHERE the resource type docker-image works. 
 # Not really ideal, but it works. 
 cp -R ./dist $GOPATH/.
+
 cd $GOPATH
-# Check
-echo "List whats in the /dist directory"
-ls -lat dist
+# Check whats here
+echo "List whats in top directory"
+ls -lat 

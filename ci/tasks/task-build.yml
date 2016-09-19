@@ -1,3 +1,5 @@
+# hello-go task-build.yml
+
 platform: linux
 
 image_resource:
