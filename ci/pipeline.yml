@@ -11,8 +11,6 @@ jobs:
       text: "From hello-go: STARTED job-unit-tests in concourse ci."
   - put: resource-repo-status
     params: { state: "pending", description: "STARTED job-unit-tests in concourse ci.", commit: "hello-go" }
-  - put: resource-template
-    params: { text: "hello-jeff" }
   - task: task-unit-tests
     file: hello-go/ci/tasks/task-unit-tests.yml
     on_success:
@@ -47,6 +45,8 @@ jobs:
       file: hello-go/ci/tasks/task-build.yml
     - put: resource-dump-to-dockerhub
       params: { build: "dist"}
+    - put: resource-template
+      params: { text: "hello-jeff" }
       on_success:
         do:
         - put: resource-slack-alert
