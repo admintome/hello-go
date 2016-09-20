@@ -107,4 +107,4 @@ resources:
   type: jeffs-resource
   source:
     source1: sourcefoo1 
-    source1: sourcefoo2
+    source2: sourcefoo2

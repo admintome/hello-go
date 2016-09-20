@@ -38,7 +38,7 @@ docker run jeffdeCola/hello-go
 go run main.go
 ```
 
-## BUILT USING CONCOURSE CI
+## TESTED, BUILT & PUSHED TO DOCKERHUB USING CONCOURSE CI
 
 To automate the creation of the `hello-go` docker image, a concourse ci pipeline
 will unit test, build and push the docker image to dockerhub.
