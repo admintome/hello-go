@@ -11,7 +11,8 @@ jobs:
       text: "From hello-go: STARTED job-unit-tests in concourse ci."
   - put: resource-repo-status
     params: { state: "pending", description: "STARTED job-unit-tests in concourse ci.", commit: "hello-go" }
-    # - put: resource-template
+  - put: resource-template
+    params: { text: "hello-jeff" }
   - task: task-unit-tests
     file: hello-go/ci/tasks/task-unit-tests.yml
     on_success:
@@ -74,11 +75,11 @@ resource_types:
   source:
     repository: dpb587/github-status-resource
     tag: master
-#- name: jeffs-resource
-#  type: docker-image
-#  source:
-#   repository: jeffdecola/resource-template
-#   tag: latest
+- name: jeffs-resource
+  type: docker-image
+  source:
+   repository: jeffdecola/resource-template
+   tag: latest
    
 resources:
 - name: hello-go
@@ -102,5 +103,8 @@ resources:
   source:
     repository: jeffdecola/hello-go 
     access_token: {{repo_github_token}}
-#- name: resource-template
-#  type: jeffs-resource
+- name: resource-template
+  type: jeffs-resource
+  source:
+    repository: foo/bar 
+    access_token: footoken
