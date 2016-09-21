@@ -46,7 +46,7 @@ jobs:
     - put: resource-dump-to-dockerhub
       params: { build: "dist"}
     - put: resource-template
-      params: { param1: "hello jeff", param2: "How are you?" }
+      params: { param1: "Hello Jeff", param2: "How are you?" }
       on_success:
         do:
         - put: resource-slack-alert

@@ -6,7 +6,7 @@
 [![GoDoc](https://godoc.org/github.com/JeffDeCola/hello-go?status.svg)](https://godoc.org/github.com/JeffDeCola/hello-go)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
 
-`hello-go` _uses concourse ci to create and push a long running "hello-world"
+`hello-go` _uses concourse ci to test, build and push a long running "hello-world"
 docker image to dockerhub._
 
 Written in go, every 3 seconds `hello-go` will print:
