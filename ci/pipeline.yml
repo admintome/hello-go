@@ -48,7 +48,7 @@ jobs:
     - put: resource-template
       params: { param1: "Hello Jeff", param2: "How are you?" }
     - put: resource-marathon-deploy
-      params: {id: "JeffHappy2", cpu: "0.1", memory: "16.0"}
+      params: {app_json_path: "app.json"}
       on_success:
         do:
         - put: resource-slack-alert
@@ -119,5 +119,3 @@ resources:
   type: marathon-deploy
   source:
     marathonuri: http://10.141.141.10:8080
-    repository: jeffdecola/hello-go
-    tag: latest
