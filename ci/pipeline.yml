@@ -47,6 +47,8 @@ jobs:
       params: { build: "dist"}
     - put: resource-template
       params: { param1: "Hello Jeff", param2: "How are you?" }
+    - put: resource-marathon-deploy
+      params: {id: "JeffHappy2", cpu: "0.1", memory: "16.0"}
       on_success:
         do:
         - put: resource-slack-alert
@@ -80,7 +82,12 @@ resource_types:
   source:
    repository: jeffdecola/resource-template
    tag: latest
-   
+- name: marathon-deploy
+  type: docker-image
+  source:
+   repository: jeffdecola/resource-marathon-deploy
+   tag: latest
+
 resources:
 - name: hello-go
   type: git
@@ -108,3 +115,9 @@ resources:
   source:
     source1: sourcefoo1 
     source2: sourcefoo2
+- name: resource-marathon-deploy
+  type: marathon-deploy
+  source:
+    marathonuri: http://10.141.141.10:8080
+    repository: jeffdecola/hello-go
+    tag: latest
