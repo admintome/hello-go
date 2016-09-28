@@ -46,9 +46,7 @@ jobs:
     - put: resource-dump-to-dockerhub
       params: { build: "dist"}
     - put: resource-template
-      params: { param1: "Hello Jeff", param2: "How are you?" }
-    - put: resource-marathon-deploy
-      params: {app_json_path: "app.json"}
+      params: { param1: "Hello Jeff", param2: "How are you?" }    
       on_success:
         do:
         - put: resource-slack-alert
@@ -65,6 +63,38 @@ jobs:
             text: "From hello-go: FAILED job-build in concourse ci."
         - put: resource-repo-status
           params: { state: "failure", description: "FAILED job-build in concourse ci.", commit: "hello-go" }
+
+- name: job-deploy
+  plan:
+    - get: hello-go
+      trigger: true
+      passed: [job-build]
+    - put: resource-slack-alert
+      params:
+        channel: '#jeff-builds'
+        text: "From hello-go: STARTED job-deploy in concourse ci."
+    - put: resource-repo-status
+      params: { state: "pending", description: "STARTED job-deploy in concourse ci.", commit: "hello-go" }
+    - task: task-build
+      file: hello-go/ci/tasks/task-deploy.yml
+    - put: resource-marathon-deploy
+      params: {app_json_path: "hello-go/app.json"}      
+      on_success:
+        do:
+        - put: resource-slack-alert
+          params:
+            channel: '#jeff-builds'
+            text: "From hello-go: PASSED job-deploy in concourse ci."
+        - put: resource-repo-status
+          params: { state: "success", description: "PASSED job-deploy in concourse ci.", commit: "hello-go" }
+      on_failure:
+        do:
+        - put: resource-slack-alert
+          params:
+            channel: '#jeff-builds'
+            text: "From hello-go: FAILED job-deploy in concourse ci."
+        - put: resource-repo-status
+          params: { state: "failure", description: "FAILED job-deploy in concourse ci.", commit: "hello-go" }
 
 resource_types:
 - name: slack-notification
