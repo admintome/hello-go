@@ -6,8 +6,8 @@
 [![GoDoc](https://godoc.org/github.com/JeffDeCola/hello-go?status.svg)](https://godoc.org/github.com/JeffDeCola/hello-go)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
 
-`hello-go` _uses concourse ci to test, build and push a long running "hello-world"
-docker image to dockerhub._
+`hello-go` _uses concourse ci to test, build, push (to dockerhub) and
+deploy a long running "hello-world" docker image to marathon._
 
 Written in go, every 3 seconds `hello-go` will print:
 
@@ -19,10 +19,14 @@ Hello everyone, count is: 3
 ```
 
 `hello-go` shows how a simple "hello-world" program uses concourse ci to
-automate the creation and push of a docker image to dockerhub.
+automate the creation and deployment of a docker image to marathon.
 
 The `hello-go` [docker image](https://hub.docker.com/r/jeffdecola/hello-go) is useful in
 marathon and mesos testing where a simple long running app is needed.
+
+## MARATHON .JSON FILE
+
+A marathon .json file (app.json) is used to deploy the APP.
 
 ## RUN
 
@@ -59,6 +63,9 @@ fly -t ci set-pipeline -p hello-go -c ci/pipeline.yml --load-vars-from ci/.crede
 As seen in the pipeline diagram, the _resource-dump-to-dockerhub_ uses the resource type
 [docker-image](https://github.com/concourse/docker-image-resource)
 to push a docker image to dockerhub.
+
+[_`resource-marathon-deploy`_](https://github.com/JeffDeCola/resource-marathon-deploy) deploys the
+newly created docker image to marathon.
 
 `hello-go` also contains a few extra concourse resources:
 
