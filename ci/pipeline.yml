@@ -19,7 +19,7 @@ jobs:
         params:
           channel: '#jeff-builds'
           text_file: 'src/github.com/JeffDeCola/hello-go/test_cover.log'
-          text: "From hello-go: PASSED job-unit-tests in concourse ci. Result is $TEXT_FILE_CONTENT"
+          text: "From hello-go: PASSED job-unit-tests in concourse ci.************************"
       - put: resource-repo-status
         params: { state: "pending", description: "PASSED job-unit-tests in concourse ci", commit: "hello-go" }
     on_failure:
