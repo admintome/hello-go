@@ -11,5 +11,8 @@ image_resource:
 inputs:
 - name: hello-go
 
+outputs:
+- name: coverage-results
+
 run:
   path: ./hello-go/ci/scripts/unit-tests.sh
