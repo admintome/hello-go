@@ -18,7 +18,7 @@ jobs:
       - put: resource-slack-alert
         params:
           channel: '#jeff-builds'
-          textfile: test_coverage.log
+          textfile: src/github.com/JeffDeCola/hello-go/test_coverage.log
           text: "From hello-go: PASSED job-unit-tests in concourse ci. Result is $TEXT_FILE_CONTENT"
       - put: resource-repo-status
         params: { state: "pending", description: "PASSED job-unit-tests in concourse ci", commit: "hello-go" }

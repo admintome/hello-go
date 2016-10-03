@@ -23,5 +23,7 @@ cd src/github.com/JeffDeCola/hello-go
 # print to stdout and file using tee
 go test -v -cover ./... | tee test_cover.log
 
+echo "Gopath is: " $GOPATH
+echo "pwd is: " $PWD
 echo "List whats in the current directory"
 ls -lat
