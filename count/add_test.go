@@ -12,8 +12,9 @@ func TestAddthis(t *testing.T) {
 		args     args
 		wantTemp int
 	}{
-		{"Adds 1 to 0", args{1, 0}, 1},
-		{"Adds 0 to 3", args{0, 2}, 2},
+		{"counttest1", args{a: 2, b: 2}, 4},
+		{"counttest2", args{a: 4, b: 2}, 6},
+		{"counttest3", args{a: 9, b: 12}, 21},
 	}
 	for _, tt := range tests {
 		if gotTemp := Addthis(tt.args.a, tt.args.b); gotTemp != tt.wantTemp {

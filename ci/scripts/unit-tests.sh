@@ -19,7 +19,8 @@ echo "Gopath is: " $GOPATH
 echo "pwd is: " $PWD
 cd src/github.com/JeffDeCola/hello-go
 
-# RUN unit_tests
-# go test -v -cover ./...
+# RUN unit_tests and it shows the percentage coverage
+# print to stdout and file using tee
+go test -v -cover ./... | tee test_cover.log
 
 

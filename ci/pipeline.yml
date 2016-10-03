@@ -19,6 +19,10 @@ jobs:
         params:
           channel: '#jeff-builds'
           text: "From hello-go: PASSED job-unit-tests in concourse ci."
+      - put: resource-slack-alert
+        params:
+          channel: '#jeff-builds'
+          text_file: test_cover.log
       - put: resource-repo-status
         params: { state: "pending", description: "PASSED job-unit-tests in concourse ci", commit: "hello-go" }
     on_failure:
@@ -75,7 +79,7 @@ jobs:
         text: "From hello-go: STARTED job-deploy in concourse ci."
     - put: resource-repo-status
       params: { state: "pending", description: "STARTED job-deploy in concourse ci.", commit: "hello-go" }
-    - task: task-build
+    - task: task-deploy
       file: hello-go/ci/tasks/task-deploy.yml
     - put: resource-marathon-deploy
       params: {app_json_path: "hello-go/app.json"}      
