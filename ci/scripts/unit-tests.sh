@@ -4,6 +4,7 @@
 set -e -x
 
 # The code is located in /hello-go
+echo "pwd is: " $PWD
 echo "List whats in the current directory"
 ls -lat 
 
@@ -23,10 +24,7 @@ cd src/github.com/JeffDeCola/hello-go
 # print to stdout and file using tee
 go test -v -cover ./... | tee test_coverage.txt
 
-echo "Gopath is: " $GOPATH
-echo "pwd is: " $PWD
-echo "List whats in the current directory"
-ls -lat
-echo "test_cover.txt is: "
-cat test_coverage.txt
+# Move to coverage-results directory.
+mv test_coverage.txt $GOPATH/coverage-results/.
+
 

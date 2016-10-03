@@ -18,7 +18,7 @@ jobs:
       - put: resource-slack-alert
         params:
           channel: '#jeff-builds'
-          text_file: ./test_coverage.txt
+          text_file: coverage-results/test_coverage.txt
           text: |
             From hello-go: PASSED job-unit-tests in concourse ci. 
             Result: $TEXT_FILE_CONTENT
