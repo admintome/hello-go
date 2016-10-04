@@ -21,7 +21,7 @@ jobs:
           text_file: coverage-results/test_coverage.txt
           text: |
             From hello-go: PASSED job-unit-tests in concourse ci. 
-            Result: $TEXT_FILE_CONTENT
+            $TEXT_FILE_CONTENT
       - put: resource-repo-status
         params: { state: "pending", description: "PASSED job-unit-tests in concourse ci", commit: "hello-go" }
     on_failure:
