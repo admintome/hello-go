@@ -57,7 +57,7 @@ jobs:
             channel: '#jeff-builds'
             text: "From hello-go: PASSED job-build in concourse ci."
         - put: resource-repo-status
-          params: { state: "success", description: "PASSED job-build in concourse ci.", commit: "hello-go" }
+          params: { state: "pending", description: "PASSED job-build in concourse ci.", commit: "hello-go" }
       on_failure:
         do:
         - put: resource-slack-alert
