@@ -80,8 +80,10 @@ jobs:
       params: { state: "pending", description: "STARTED job-deploy in concourse ci.", commit: "hello-go" }
     - task: task-deploy
       file: hello-go/ci/tasks/task-deploy.yml
-    - put: resource-marathon-deploy
-      params: {app_json_path: "hello-go/app.json"}      
+#    - put: resource-marathon-deploy
+#      params: {app_json_path: "hello-go/app.json"}      
+    - put: resource-marathon
+      params: {app_json: "hello-go/app.json", time_out: 10}      
       on_success:
         do:
         - put: resource-slack-alert
@@ -115,10 +117,15 @@ resource_types:
   source:
    repository: jeffdecola/resource-template
    tag: latest
+#- name: marathon-deploy
+#  type: docker-image
+#  source:
+#   repository: jeffdecola/resource-marathon-deploy
+#   tag: latest
 - name: marathon-deploy
   type: docker-image
   source:
-   repository: jeffdecola/resource-marathon-deploy
+   repository: ckaznocha/marathon-resource
    tag: latest
 
 resources:
@@ -148,7 +155,12 @@ resources:
   source:
     source1: sourcefoo1 
     source2: sourcefoo2
-- name: resource-marathon-deploy
+#- name: resource-marathon-deploy
+#  type: marathon-deploy
+#  source:
+#    marathonuri: http://10.141.141.10:8080
+- name: resource-marathon
   type: marathon-deploy
   source:
-    marathonuri: http://10.141.141.10:8080
+    app_id: yeah22
+    uri: http://10.141.141.10:8080
