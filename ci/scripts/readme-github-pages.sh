@@ -8,9 +8,11 @@ echo "pwd is: " $PWD
 echo "List whats in the current directory"
 ls -lat 
 
-cp -r hello-go hello-go-updated
+# Note: hello-go-updated already created becasue of yml file
+cp -r hello-go/. hello-go-updated
 
 cd hello-go-updated
+ls -lat 
 
 # FOR GITHUB WEBPAGES
 # BASICALLY COPY README.md to /docs/_includes/README.md
