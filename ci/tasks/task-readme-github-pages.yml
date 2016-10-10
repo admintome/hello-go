@@ -11,5 +11,8 @@ image_resource:
 inputs:
 - name: hello-go
 
+outputs:
+-name: hello-go-updated
+
 run:
   path: ./hello-go/ci/scripts/readme-github-pages.sh

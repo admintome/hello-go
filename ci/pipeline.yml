@@ -10,7 +10,7 @@ jobs:
     file: hello-go/ci/tasks/task-readme-github-pages.yml
   - put: hello-go
     params:
-      repository: hello-go
+      repository: hello-go-updated
 
 - name: job-unit-tests
   plan:
