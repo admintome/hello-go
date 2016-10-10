@@ -19,7 +19,7 @@ ls -lat
 # Remove everything before the second hedading.
 sed '0,/GitHub Webpage/d' README.md > docs/_includes/README.md
 # update the image links (remove docs/)
-sed -i 's#IMAGE](docs/#IMAGE](#g' README.md
+sed -i 's#IMAGE](docs/#IMAGE](#g' docs/_includes/README.md
 
 #ADD AND COMMIT
 git config --global user.email "jeff@kepperlabs.com"
