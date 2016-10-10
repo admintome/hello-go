@@ -1,18 +1,19 @@
 # hello-go pipeline.yml
 
+
+
 jobs:
+
 - name: job-readme-github-pages
   plan:
   - get: hello-go
     trigger: true
   - task: task-readme-github-pages
     file: hello-go/ci/tasks/task-readme-github-pages.yml
-    on_success:
-    - put: hello-go
-      params:
-        repository: hello-go  
+  - put: hello-go
+    params:
+      repository: hello-go
 
-jobs:
 - name: job-unit-tests
   plan:
   - get: hello-go
@@ -118,6 +119,7 @@ jobs:
           params: { state: "failure", description: "FAILED job-deploy in concourse ci.", commit: "hello-go" }
 
 resource_types:
+
 - name: slack-notification
   type: docker-image
   source:
@@ -145,6 +147,7 @@ resource_types:
    tag: latest
 
 resources:
+
 - name: hello-go
   type: git
   source:
