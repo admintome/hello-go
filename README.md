@@ -11,7 +11,7 @@ deploy a long running "hello-world" docker image to marathon._
 
 [GitHub Webpage](https://jeffdecola.github.io/hello-go/)
 
-## LONG-RUNNING APP FOR MARATHON - TEST
+## LONG-RUNNING APP FOR MARATHON
 
 Written in go, every 3 seconds `hello-go` will print:
 
@@ -53,7 +53,7 @@ go run main.go
 To automate the creation of the `hello-go` docker image, a concourse ci pipeline
 will unit test, build and push the docker image to dockerhub.
 
-![IMAGE - hello-go concourse pipeline - IMAGE](docs/pics/hello-go-pipeline.jpg)
+![IMAGE - hello-go concourse pipeline - IMAGE](pics/hello-go-pipeline.jpg)
 
 A _ci/.credentials.yml_ file needs to be created for your _slack_url_, _repo_github_token_,
 and _dockerhub_password_.
