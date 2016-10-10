@@ -9,7 +9,7 @@ echo "List whats in the current directory"
 ls -lat 
 
 # Note: hello-go-updated already created becasue of yml file
-cp -r hello-go/. hello-go-updated
+git clone hello-go hello-go-updated
 
 cd hello-go-updated
 ls -lat 
