@@ -53,11 +53,7 @@ go run main.go
 To automate the creation of the `hello-go` docker image, a concourse ci pipeline
 will unit test, build and push the docker image to dockerhub.
 
-<<<<<<< HEAD
-![IMAGE - hello-go concourse ci pipeline - IMAGE](docs/pics/hello-go-pipeline.jpg)
-=======
 ![IMAGE - hello-go concourse ci piepline - IMAGE](pics/hello-go-pipeline.jpg)
->>>>>>> 290d05a1c781a68fe82913fd221b27db06b286b8
 
 A _ci/.credentials.yml_ file needs to be created for your _slack_url_, _repo_github_token_,
 and _dockerhub_password_.
