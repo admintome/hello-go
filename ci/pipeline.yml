@@ -149,7 +149,8 @@ resources:
 - name: hello-go
   type: git
   source:
-    uri: https://github.com/JeffDeCola/hello-go
+    #uri: https://github.com/JeffDeCola/hello-go
+    uri: git@github.com:JeffDeCola/hello-go.git
     branch: master
     private_key: {{git_private_key}}
 - name: resource-dump-to-dockerhub
