@@ -72,4 +72,4 @@ deploys the newly created docker image to marathon.
   that can be used as a starting point and template for creating other concourse
   ci resources.
 
-These resources can be easily removed from the pipeline.
+The above resources can be easily removed from the pipeline.
