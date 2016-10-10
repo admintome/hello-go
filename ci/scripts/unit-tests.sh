@@ -3,11 +3,6 @@
 
 set -e -x
 
-# FOR GITHUB WEBPAGES
-# BASICALLY COPY README.md to /docs/_includes/README.md
-# Remove everything before the second hedading.
-sed '0,/GitHub Webpage/d' hello-go/README.md > hello-go/docs/_includes/README.md
-
 # The code is located in /hello-go
 echo "pwd is: " $PWD
 echo "List whats in the current directory"

@@ -1,13 +1,23 @@
 # hello-go pipeline.yml
 
 jobs:
+- name: job-readme-github-pages
+  plan:
+  - get: hello-go
+    trigger: true
+  - task: task-readme-github-pages
+    file: hello-go/ci/tasks/task-readme-github-pages.yml
+    on_success:
+    - put: hello-go
+      params:
+        repository: hello-go  
+
+jobs:
 - name: job-unit-tests
   plan:
   - get: hello-go
     trigger: true
-  - put: hello-go
-    params:
-      repository: hello-go  
+    passed: [job-readme-github-pages]
   - put: resource-slack-alert
     params:
       channel: '#jeff-builds'
@@ -18,6 +28,9 @@ jobs:
     file: hello-go/ci/tasks/task-unit-tests.yml
     on_success:
       do:
+      - put: hello-go
+        params:
+          repository: hello-go  
       - put: resource-slack-alert
         params:
           channel: '#jeff-builds'
