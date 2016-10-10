@@ -131,12 +131,12 @@ resource_types:
 - name: jeffs-resource
   type: docker-image
   source:
-   repository: jeffdecola/resource-template
+   repository: JeffDeCola/resource-template
    tag: latest
 #- name: marathon-deploy
 #  type: docker-image
 #  source:
-#   repository: jeffdecola/resource-marathon-deploy
+#   repository: JeffDeCola/resource-marathon-deploy
 #   tag: latest
 - name: marathon-deploy
   type: docker-image
@@ -155,9 +155,9 @@ resources:
 - name: resource-dump-to-dockerhub
   type: docker-image
   source:
-    repository: jeffdecola/hello-go
+    repository: JeffDeCola/hello-go
     tag: latest
-    username: jeffdecola
+    username: JeffDeCola
     password: {{dockerhub_password}}
 - name: resource-slack-alert
   type: slack-notification
@@ -166,7 +166,7 @@ resources:
 - name: resource-repo-status 
   type: github-status
   source:
-    repository: jeffdecola/hello-go 
+    repository: JeffDeCola/hello-go 
     access_token: {{repo_github_token}}
 - name: resource-template
   type: jeffs-resource

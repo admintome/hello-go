@@ -27,3 +27,4 @@ git status
 git add .
 git commit -m "COPY README.md to /docs/_includes/README.md"
 git status
+git remote add origin https://github.com/JeffDeCola/hello-go.git
