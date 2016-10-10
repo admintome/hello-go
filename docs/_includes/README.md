@@ -1,22 +1,10 @@
-# hello-go
-
-[![Code Climate](https://codeclimate.com/github/JeffDeCola/hello-go/badges/gpa.svg)](https://codeclimate.com/github/JeffDeCola/hello-go)
-[![Issue Count](https://codeclimate.com/github/JeffDeCola/hello-go/badges/issue_count.svg)](https://codeclimate.com/github/JeffDeCola/hello-go/issues)
-[![Go Report Card](https://goreportcard.com/badge/jeffdecola/hello-go)](https://goreportcard.com/report/jeffdecola/hello-go)
-[![GoDoc](https://godoc.org/github.com/JeffDeCola/hello-go?status.svg)](https://godoc.org/github.com/JeffDeCola/hello-go)
-[![License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
-
-`hello-go` _uses concourse ci to test, build, push (to dockerhub) and
-deploy a long running "hello-world" docker image to marathon._
-
-[GitHub Webpage](https://jeffdecola.github.io/hello-go/)
 
 ## LONG-RUNNING APP FOR MARATHON
 
 Written in go, every 3 seconds `hello-go` will print:
 
 ```bash
-Hello everyone, count is: 1
+Hello everyone, count is: 1 -TEST-ERASE THIS
 Hello everyone, count is: 2
 Hello everyone, count is: 3
 ...
