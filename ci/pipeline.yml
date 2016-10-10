@@ -1,7 +1,5 @@
 # hello-go pipeline.yml
 
-
-
 jobs:
 
 - name: job-readme-github-pages
@@ -151,8 +149,9 @@ resources:
 - name: hello-go
   type: git
   source:
-    uri: https://github.com/jeffdecola/hello-go
+    uri: https://github.com/JeffDeCola/hello-go
     branch: master
+    private_key: {{git_private_key}}
 - name: resource-dump-to-dockerhub
   type: docker-image
   source:
