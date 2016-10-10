@@ -1,5 +1,5 @@
 
-## LONG-RUNNING APP FOR MARATHON
+## LONG-RUNNING APP FOR MARATHON - TEST
 
 Written in go, every 3 seconds `hello-go` will print:
 
