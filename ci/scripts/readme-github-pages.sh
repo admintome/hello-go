@@ -29,4 +29,4 @@ git status
 git add .
 git commit -m "cp README.md to docs/_includes/README.md"
 git status
-git config --list
+#git config --list
