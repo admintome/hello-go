@@ -3,6 +3,11 @@
 
 set -e -x
 
+# FOR GITHUB WEBPAGES
+# BASICALLY COPY README.md to /docs/_includes/README.md
+# Remove everything before the second hedading.
+sed '0,/GitHub Webpage/d' hello-go/README.md > hello-go/docs/_includes/README.md
+
 # The code is located in /hello-go
 echo "pwd is: " $PWD
 echo "List whats in the current directory"
@@ -19,6 +24,7 @@ cp -R ./hello-go src/github.com/JeffDeCola/.
 echo "Gopath is: " $GOPATH
 echo "pwd is: " $PWD
 cd src/github.com/JeffDeCola/hello-go
+ls -lat
 
 # RUN unit_tests and it shows the percentage coverage
 # print to stdout and file using tee

@@ -5,6 +5,9 @@ jobs:
   plan:
   - get: hello-go
     trigger: true
+  - put: hello-go
+    params:
+      repository: hello-go  
   - put: resource-slack-alert
     params:
       channel: '#jeff-builds'
