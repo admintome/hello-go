@@ -21,7 +21,9 @@ sed '0,/GitHub Webpage/d' README.md > docs/_includes/README.md
 
 #ADD AND COMMIT
 git config --global user.email "jeff@kepperlabs.com"
-git config --global user.name "Jeff DeCola"
+git config --global user.name "Jeff DeCola (concourse)"
 
+git status
 git add .
 git commit -m "COPY README.md to /docs/_includes/README.md"
+git status
