@@ -54,8 +54,8 @@ fly -t ci set-pipeline -p hello-go -c ci/pipeline.yml --load-vars-from ci/.crede
 
 ## CONCOURSE RESOURCES IN PIPELINE
 
-As seen in the pipeline diagram, the _resource-dump-to-dockerhub_
-uses the resource type
+As seen in the pipeline diagram, the _resource-dump-to-dockerhub_ uses
+the resource type
 [docker-image](https://github.com/concourse/docker-image-resource)
 to push a docker image to dockerhub.
 
