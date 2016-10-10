@@ -4,7 +4,7 @@
 Written in go, every 3 seconds `hello-go` will print:
 
 ```bash
-Hello everyone, count is: 1 -TEST-ERASE THIS
+Hello everyone, count is: 1
 Hello everyone, count is: 2
 Hello everyone, count is: 3
 ...
