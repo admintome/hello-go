@@ -11,7 +11,7 @@ deploy a long running "hello-world" docker image to Marathon._
 
 [GitHub Webpage](https://jeffdecola.github.io/hello-go/)
 
-## LONG-RUNNING APPLICATION FOR MARATHON
+## LONG-RUNNING APP FOR MARATHON
 
 Written in go, every 3 seconds `hello-go` will print:
 
