@@ -24,6 +24,7 @@ sed -i 's#IMAGE](docs/#IMAGE](#g' docs/_includes/README.md
 # CHECK IF THEERE IS A DIFF, IF THERE IS COMMIT, IF NOT DON'T
 # Returns 0 is same, 1 if diff
 cmp README.md docs/_includes/README.md > /tmp/null 2>&1
+echo $?
 if echo $?
 then
     echo "README.md and docs/_includes/README.md differ"
@@ -36,3 +37,4 @@ then
     git commit -m "cp README.md to docs/_includes/README.md"
 fi
 echo "complete"
+echo $?
