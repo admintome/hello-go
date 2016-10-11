@@ -22,8 +22,8 @@ Hello everyone, count is: 3
 ...
 ```
 
-`hello-go` shows how a simple "hello-world" program uses concourse ci to
-automate the creation and deployment of a docker image to marathon.
+`hello-go` shows how a simple "hello-world" program uses concourse ci
+to automate the creation and deployment of a docker image to marathon.
 
 The `hello-go` [docker image](https://hub.docker.com/r/jeffdecola/hello-go)
 is useful in marathon and mesos testing where a simple long running app is needed.
@@ -84,4 +84,4 @@ deploys the newly created docker image to marathon.
   that can be used as a starting point and template for creating other concourse
   ci resources.
 
-The above resources can be easily removed from the pipeline.
+The above resources can be removed from the pipeline.
