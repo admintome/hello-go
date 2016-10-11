@@ -27,7 +27,4 @@ git config --global user.name "Jeff DeCola (concourse)"
 
 git status
 git add .
-git commit -m "cp README.md to docs/_includes/README.md"
-git status
-ls -lat 
-#git config --list
+git commit -m "cp README.md to docs/_includes/README.md" --allow-empty
