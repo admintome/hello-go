@@ -25,7 +25,7 @@ sed -i 's#IMAGE](docs/#IMAGE](#g' docs/_includes/README.md
 # Returns 0 is same, 1 if diff
 cmp
 echo "start"
-cmp README.md docs/_includes/README.md > diff.txt 2>&1
+cmp README.md docs/_includes/README.md > diff.txt
 echo $?
 if echo $?
 then
