@@ -35,3 +35,4 @@ then
     git add .
     git commit -m "cp README.md to docs/_includes/README.md"
 fi
+echo "complete"
