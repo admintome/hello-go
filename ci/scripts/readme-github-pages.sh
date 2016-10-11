@@ -24,7 +24,7 @@ sed -i 's#IMAGE](docs/#IMAGE](#g' docs/_includes/README.md
 # CHECK IF THEERE IS A DIFF, IF THERE IS COMMIT, IF NOT DON'T
 # Returns 0 is same, 1 if diff
 echo "start"
-cmp README.md docs/_includes/README.md > diff.txt
+cmp README.md docs/_includes/README.md
 echo "end"
 echo $?
 echo "hello"
