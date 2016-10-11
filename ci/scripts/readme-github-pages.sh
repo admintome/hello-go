@@ -24,6 +24,8 @@ sed -i 's#IMAGE](docs/#IMAGE](#g' temp-README.md
 # CHECK IF THEERE IS A DIFF, IF THERE IS COMMIT, IF NOT DON'T
 if !(cmp -s temp-README.md docs/_includes/README.md)
 then
+    cp temp-README.md docs/_includes/README.md
+    rm temp-README.md
     echo "README.md and docs/_includes/README.md differ"
     #ADD AND COMMIT
     git config --global user.email "jeff@keeperlabs.com"
@@ -34,6 +36,7 @@ then
     git add docs/_includes/README.md
     git commit -m "cp README.md docs/_includes/README.md for GitHub Page"
     git status
+else
+    rm temp-README.md
 fi
-rm temp-README.md
 echo "complete"
