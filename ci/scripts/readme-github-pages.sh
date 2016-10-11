@@ -21,10 +21,11 @@ sed '0,/GitHub Webpage/d' README.md > docs/_includes/README.md
 # update the image links (remove docs/)
 sed -i 's#IMAGE](docs/#IMAGE](#g' docs/_includes/README.md
 
+# CHECK IF THEERE IS A DIFF, IF THERE IS COMMIT, IF NOT DON'T
 #ADD AND COMMIT
-git config --global user.email "jeff@keeperlabs.com"
-git config --global user.name "Jeff DeCola (concourse)"
+#git config --global user.email "jeff@keeperlabs.com"
+#git config --global user.name "Jeff DeCola (concourse)"
 
 git status
-git add .
-git commit -m "cp README.md to docs/_includes/README.md" --allow-empty
+#git add .
+#git commit -m "cp README.md to docs/_includes/README.md" --allow-empty
