@@ -17,12 +17,12 @@ ls -lat
 # FOR GITHUB WEBPAGES
 # BASICALLY COPY README.md to /docs/_includes/README.md
 # Remove everything before the second hedading.
-sed '0,/GitHub Webpage/d' README.md > docs/_includes/README.md
+sed '0,/GitHub Webpage/d' README.md > temp-README.md
 # update the image links (remove docs/)
-sed -i 's#IMAGE](docs/#IMAGE](#g' docs/_includes/README.md
+sed -i 's#IMAGE](docs/#IMAGE](#g' temp-README.md
 
 # CHECK IF THEERE IS A DIFF, IF THERE IS COMMIT, IF NOT DON'T
-if !(cmp -s README.md docs/_includes/README.md)
+if !(cmp -s temp-README.md docs/_includes/README.md)
 then
     echo "README.md and docs/_includes/README.md differ"
     #ADD AND COMMIT
@@ -35,4 +35,5 @@ then
     git commit -m "cp README.md docs/_includes/README.md for GitHub Page"
     git status
 fi
+rm temp-README.md
 echo "complete"
