@@ -6,8 +6,8 @@
 [![GoDoc](https://godoc.org/github.com/JeffDeCola/hello-go?status.svg)](https://godoc.org/github.com/JeffDeCola/hello-go)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
 
-`hello-go` _uses concourse ci to test, build, push (to dockerhub) and
-deploy a long running "hello-world" docker image to marathon._
+`hello-go` _uses Concourse ci to test, build, push (to dockerhub) and
+deploy a long running "hello-world" docker image to Marathon._
 
 [GitHub Webpage](https://jeffdecola.github.io/hello-go/)
 
