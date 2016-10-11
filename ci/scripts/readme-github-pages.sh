@@ -23,7 +23,7 @@ sed -i 's#IMAGE](docs/#IMAGE](#g' docs/_includes/README.md
 
 # CHECK IF THEERE IS A DIFF, IF THERE IS COMMIT, IF NOT DON'T
 # Returns 0 is same, 1 if diff
-cmp README.md docs/_includes/README.md > /tmp/null 2>&1
+cmp README.md docs/_includes/README.md > diff.txt 2>&1
 echo $?
 if echo $?
 then
@@ -33,8 +33,10 @@ then
     git config --global user.name "Jeff DeCola (concourse)"
 
     git status
-    git add .
-    git commit -m "cp README.md to docs/_includes/README.md"
+    # ONLY add what is needed to protect from unforseen issues.
+    git add docs/_includes/README.md
+    git commit -m "cp README.md docs/_includes/README.md for GitHub Page"
+    git status
 fi
 echo "complete"
 echo $?
