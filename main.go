@@ -10,7 +10,6 @@ import (
 )
 
 // Looping forever - For testing Marathon and Mesos
-// The function Addthis is not needed, but I put it in for fun.
 func main() {
 	var a = 0
 	var b = 1
