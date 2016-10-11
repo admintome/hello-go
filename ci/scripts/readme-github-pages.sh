@@ -23,10 +23,11 @@ sed -i 's#IMAGE](docs/#IMAGE](#g' docs/_includes/README.md
 
 # CHECK IF THEERE IS A DIFF, IF THERE IS COMMIT, IF NOT DON'T
 # Returns 0 is same, 1 if diff
-cmp
 echo "start"
 cmp README.md docs/_includes/README.md > diff.txt
+echo "end"
 echo $?
+echo "hello"
 if echo $?
 then
     echo "README.md and docs/_includes/README.md differ"
