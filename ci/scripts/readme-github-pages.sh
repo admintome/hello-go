@@ -23,7 +23,7 @@ sed -i 's#IMAGE](docs/#IMAGE](#g' docs/_includes/README.md
 
 # CHECK IF THEERE IS A DIFF, IF THERE IS COMMIT, IF NOT DON'T
 # Returns 0 is same, 1 if diff
-if [cmp  README.md docs/_includes/README.md >/dev/null 2>&1]
+if cmp  README.md docs/_includes/README.md >/dev/null 2>&1
 then
     echo "README.md and docs/_includes/README.md differ"
     #ADD AND COMMIT
