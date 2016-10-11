@@ -22,7 +22,7 @@ sed '0,/GitHub Webpage/d' README.md > docs/_includes/README.md
 sed -i 's#IMAGE](docs/#IMAGE](#g' docs/_includes/README.md
 
 # CHECK IF THEERE IS A DIFF, IF THERE IS COMMIT, IF NOT DON'T
-if cmp -s README.md docs/_includes/README.md
+if !(cmp -s README.md docs/_includes/README.md)
 then
     echo "README.md and docs/_includes/README.md differ"
     #ADD AND COMMIT
