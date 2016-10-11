@@ -21,8 +21,6 @@ sed '0,/GitHub Webpage/d' README.md > docs/_includes/README.md
 # update the image links (remove docs/)
 sed -i 's#IMAGE](docs/#IMAGE](#g' docs/_includes/README.md
 
-cmp 
-
 #ADD AND COMMIT
 git config --global user.email "jeff@keeperlabs.com"
 git config --global user.name "Jeff DeCola (concourse)"
