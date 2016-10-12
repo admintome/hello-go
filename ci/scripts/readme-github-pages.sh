@@ -29,7 +29,7 @@ then
     echo "README.md and docs/_includes/README.md differ"
     #ADD AND COMMIT
     git config --global user.email "jeff@keeperlabs.com"
-    git config --global user.name "Jeff DeCola (concourse)"
+    git config --global user.name "Jeff DeCola (Concourse)"
 
     git status
     # ONLY add what is needed to protect from unforseen issues.
