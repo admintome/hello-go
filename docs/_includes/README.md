@@ -1,3 +1,4 @@
+[Docker Image](https://hub.docker.com/r/jeffdecola/hello-go)
 
 ## LONG-RUNNING APP FOR MARATHON
 
@@ -14,7 +15,7 @@ Hello everyone, count is: 3
 to automate the creation and deployment of a docker image to marathon.
 
 The `hello-go` [docker image](https://hub.docker.com/r/jeffdecola/hello-go)
-is useful in marathon and mesos testing where a simple long running app is needed.
+is useful in Marathon and Mesos testing where a simple long running app is needed.
 
 ## MARATHON .json FILE
 
