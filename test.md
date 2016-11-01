@@ -6,8 +6,8 @@
 [![GoDoc](https://godoc.org/github.com/JeffDeCola/hello-go?status.svg)](https://godoc.org/github.com/JeffDeCola/hello-go)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
 
-`hello-go` _uses concourse ci to test, build, push (to dockerhub) and
-deploy a long running "hello-world" docker image to marathon._
+`hello-go` _uses Concourse ci to test, build, push (to dockerhub) and
+deploy a long running "hello-world" docker image to Marathon._
 
 [GitHub Webpage](https://jeffdecola.github.io/hello-go/)
 
@@ -53,7 +53,7 @@ go run main.go
 To automate the creation of the `hello-go` docker image, a concourse ci pipeline
 will unit test, build and push the docker image to dockerhub.
 
-![IMAGE - hello-go concourse ci piepline - IMAGE](pics/hello-go-pipeline.jpg)
+![IMAGE - hello-go concourse ci piepline - IMAGE](docs/pics/hello-go-pipeline.jpg)
 
 A _ci/.credentials.yml_ file needs to be created for your _slack_url_, _repo_github_token_,
 and _dockerhub_password_.
@@ -66,8 +66,8 @@ fly -t ci set-pipeline -p hello-go -c ci/pipeline.yml --load-vars-from ci/.crede
 
 ## CONCOURSE RESOURCES IN PIPELINE
 
-As seen in the pipeline diagram, the _resource-dump-to-dockerhub_
-uses the resource type
+As seen in the pipeline diagram, the _resource-dump-to-dockerhub_ uses
+the resource type
 [docker-image](https://github.com/concourse/docker-image-resource)
 to push a docker image to dockerhub.
 
@@ -84,4 +84,4 @@ deploys the newly created docker image to marathon.
   that can be used as a starting point and template for creating other concourse
   ci resources.
 
-These resources can be easily removed from the pipeline.
+The above resources can be easily removed from the pipeline.
