@@ -11,43 +11,53 @@ Hello everyone, count is: 3
 ...
 ```
 
-`hello-go` shows how a simple "hello-world" program uses concourse ci
-to automate the creation and deployment of a docker image to marathon.
+`hello-go` shows how a simple "hello-world" program uses Concourse
+to automate the creation and deployment of a Docker Image to Marathon.
 
-The `hello-go` [docker image](https://hub.docker.com/r/jeffdecola/hello-go)
+The `hello-go` [Docker Image](https://hub.docker.com/r/jeffdecola/hello-go)
 is useful in Marathon and Mesos testing where a simple long running app is needed.
 
 ## MARATHON .json FILE
 
 [_`resource-marathon-deploy`_](https://github.com/JeffDeCola/resource-marathon-deploy)
-uses a marathon .json file (app.json) to deploys the newly created docker image
-(APP) to marathon.
+uses a Marathon .json file (app.json) to deploys the newly created Docker Image
+(APP) to Marathon.
 
 ## RUN
 
-### Run image from dockerhub
+### Run Image from DockerHub
+
+Run in interactive mode so you can `ctrl-c` to stop.
 
 ```bash
-docker run jeffdeCola/hello-go
+docker run -t -i jeffdeCola/hello-go
 ```
 
-### From the command line
+### From the Command Line
 
 ```bash
 go run main.go
 ```
 
-## TESTED, BUILT & PUSHED TO DOCKERHUB USING CONCOURSE CI
+## MANAUALLY DEPLOY APP TO MARATHON
 
-To automate the creation of the `hello-go` docker image, a concourse ci pipeline
-will unit test, build and push the docker image to dockerhub.
+`hello-go` Docker Image can be manually deployed to Marathon by using the command:
+
+```bash
+curl -X PUT http://10.141.141.10:8080/v2/apps/yeah22 -d @app.json -H "Content-type: application/json"
+```
+
+## TESTED, BUILT & PUSHED TO DOCKERHUB USING CONCOURSE
+
+To automate the creation of the `hello-go` Docker Image, a Concourse Pipeline
+will unit test, build and push the Docker Image to DockerHub.
 
 ![IMAGE - hello-go concourse ci piepline - IMAGE](pics/hello-go-pipeline.jpg)
 
 A _ci/.credentials.yml_ file needs to be created for your _slack_url_, _repo_github_token_,
 and _dockerhub_password_.
 
-Use fly to upload the the pipeline file _ci/pipline.yml_ to concourse:
+Use fly to upload the the pipeline file _ci/pipline.yml_ to Concourse:
 
 ```bash
 fly -t ci set-pipeline -p hello-go -c ci/pipeline.yml --load-vars-from ci/.credentials.yml
