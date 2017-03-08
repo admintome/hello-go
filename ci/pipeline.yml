@@ -19,9 +19,9 @@ jobs:
   - put: resource-slack-alert
     params:
       channel: '#jeff-builds'
-      text: "From hello-go: BLAHHHHH job-unit-tests in concourse ci."
+      text: "From hello-go: STARTED job-unit-tests in concourse ci."
   - put: resource-repo-status
-    params: { state: "pending", description: "BLAHHHHH job-unit-tests in concourse ci.", commit: "hello-go" }
+    params: { state: "pending", description: "STARTED job-unit-tests in concourse ci.", commit: "hello-go" }
   - task: task-unit-tests
     file: hello-go/ci/tasks/task-unit-tests.yml
     on_success:
@@ -55,9 +55,9 @@ jobs:
     - put: resource-slack-alert
       params:
         channel: '#jeff-builds'
-        text: "From hello-go: BLAHHHHH job-build in concourse ci."
+        text: "From hello-go: STARTED job-build in concourse ci."
     - put: resource-repo-status
-      params: { state: "pending", description: "BLAHHHHH job-build in concourse ci.", commit: "hello-go" }
+      params: { state: "pending", description: "STARTED job-build in concourse ci.", commit: "hello-go" }
     - task: task-build
       file: hello-go/ci/tasks/task-build.yml
     - put: resource-dump-to-dockerhub
@@ -89,9 +89,9 @@ jobs:
     - put: resource-slack-alert
       params:
         channel: '#jeff-builds'
-        text: "From hello-go: BLAHHHHH job-deploy in concourse ci."
+        text: "From hello-go: STARTED job-deploy in concourse ci."
     - put: resource-repo-status
-      params: { state: "pending", description: "BLAHHHHH job-deploy in concourse ci.", commit: "hello-go" }
+      params: { state: "pending", description: "STARTED job-deploy in concourse ci.", commit: "hello-go" }
     - task: task-deploy
       file: hello-go/ci/tasks/task-deploy.yml
 #    - put: resource-marathon-deploy
