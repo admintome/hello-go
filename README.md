@@ -56,7 +56,8 @@ go run main.go
 `hello-go` Docker Image can be manually deployed to Marathon by using the command:
 
 ```bash
-curl -X PUT http://10.141.141.10:8080/v2/apps/yeah22 -d @app.json -H "Content-type: application/json"
+curl -X PUT http://10.141.141.10:8080/v2/apps/yeah22 -d @app.json -H
+"Content-type: application/json"
 ```
 
 ## TESTED, BUILT & PUSHED TO DOCKERHUB USING CONCOURSE
