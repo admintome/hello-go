@@ -15,7 +15,7 @@ func main() {
 	var b = 1
 	for {
 		a = count.Addthis(a, b)
-		fmt.Println("Hello everyone, count is:", a)
+		fmt.Println("Hello everyone, the count is:", a)
 		time.Sleep(3000 * time.Millisecond)
 	}
 }
