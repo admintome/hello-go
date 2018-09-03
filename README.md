@@ -27,7 +27,7 @@ Hello everyone, count is: 3
 to automate the creation and deployment of a Docker Image to Marathon.
 
 The `hello-go` [Docker Image](https://hub.docker.com/r/jeffdecola/hello-go)
-is useful in Marathon and Mesos testing where a simple long running app is needed.
+is useful in marathon and mesos testing where a simple long running app is needed.
 
 ## MARATHON .json FILE
 
@@ -42,7 +42,7 @@ uses a Marathon .json file (app.json) to deploys the newly created Docker Image
 Run in interactive mode so you can `ctrl-c` to stop.
 
 ```bash
-docker run -t -i jeffdeCola/hello-go
+docker run -t -i jeffdecola/hello-go
 ```
 
 ### From the Command Line
@@ -51,7 +51,7 @@ docker run -t -i jeffdeCola/hello-go
 go run main.go
 ```
 
-## MANAUALLY DEPLOY APP TO MARATHON
+## MANUALLY DEPLOY APP TO MARATHON
 
 `hello-go` Docker Image can be manually deployed to Marathon by using the command:
 
@@ -62,21 +62,15 @@ curl -X PUT http://10.141.141.10:8080/v2/apps/yeah22 -d @app.json -H
 
 ## TESTED, BUILT & PUSHED TO DOCKERHUB USING CONCOURSE
 
-To automate the creation of the `hello-go` Docker Image, a Concourse Pipeline
-will unit test, build and push the Docker Image to DockerHub.
+To automate the creation of the `hello-go` docker image, a concourse pipeline
+will,
 
-![IMAGE - hello-go concourse ci piepline - IMAGE](docs/pics/hello-go-pipeline.jpg)
+* Update github webpage.
+* Unit test.
+* Build the docker image.
+* Push the docker image to DockerHub.
 
-A _ci/.credentials.yml_ file needs to be created for your _slack_url_, _repo_github_token_,
-and _dockerhub_password_.
-
-Use fly to upload the the pipeline file _ci/pipline.yml_ to Concourse:
-
-```bash
-fly -t ci set-pipeline -p hello-go -c ci/pipeline.yml --load-vars-from ci/.credentials.yml
-```
-
-## CONCOURSE RESOURCES IN PIPELINE
+![IMAGE - hello-go concourse ci pipeline - IMAGE](docs/pics/hello-go-pipeline.jpg)
 
 As seen in the pipeline diagram, the _resource-dump-to-dockerhub_ uses
 the resource type
@@ -96,4 +90,5 @@ deploys the newly created docker image to marathon.
   that can be used as a starting point and template for creating other concourse
   ci resources.
 
-The above resources can be removed from the pipeline.
+For more information on using concourse for continuous integration,
+refer to my cheat sheet on [concourse](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/operations-tools/continuous-integration-continuous-deployment/concourse-cheat-sheet).

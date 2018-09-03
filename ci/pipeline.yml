@@ -6,16 +6,39 @@ jobs:
   plan:
   - get: hello-go
     trigger: true
+  - put: resource-slack-alert
+    params:
+      channel: '#jeff-builds'
+      text: "From hello-go: STARTED job-readme-github-pages in concourse ci."
+  - put: resource-repo-status
+    params: { state: "pending", description: "STARTED job-readme-github-pages in concourse ci.", commit: "hello-go" }
   - task: task-readme-github-pages
     file: hello-go/ci/tasks/task-readme-github-pages.yml
-  - put: hello-go
-    params:
-      repository: hello-go-updated
+    on_success:
+      do:
+      - put: hello-go
+        params:
+          repository: hello-go-updated  
+      - put: resource-slack-alert
+        params:
+          channel: '#jeff-builds'
+          text: "From hello-go: PASSED job-readme-github-pages in concourse ci."
+      - put: resource-repo-status
+        params: { state: "success", description: "PASSED job-readme-github-pages in concourse ci", commit: "hello-go" }
+    on_failure:
+      do:
+      - put: resource-slack-alert
+        params:
+          channel: '#jeff-builds'
+          text: "From hello-go: FAILED job-readme-github-pages in concourse ci."
+      - put: resource-repo-status
+        params: { state: "failure", description: "FAILED job-readme-github-pages in concourse ci", commit: "hello-go" }
 
 - name: job-unit-tests
   plan:
   - get: hello-go
     trigger: true
+    passed: [job-readme-github-pages]
   - put: resource-slack-alert
     params:
       channel: '#jeff-builds'
@@ -37,7 +60,7 @@ jobs:
             From hello-go: PASSED job-unit-tests in concourse ci. 
             $TEXT_FILE_CONTENT
       - put: resource-repo-status
-        params: { state: "pending", description: "PASSED job-unit-tests in concourse ci", commit: "hello-go" }
+        params: { state: "success", description: "PASSED job-unit-tests in concourse ci", commit: "hello-go" }
     on_failure:
       do:
       - put: resource-slack-alert
