@@ -31,5 +31,3 @@ sed -i -e 's/^/     /' test_coverage.txt
 
 # Move to coverage-results directory.
 mv test_coverage.txt $GOPATH/coverage-results/.
-
-
