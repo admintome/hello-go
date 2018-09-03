@@ -1,6 +1,24 @@
-[Docker Image](https://hub.docker.com/r/jeffdecola/hello-go)
 
-# LONG-RUNNING APP FOR MARATHON
+[hello-go Docker Image](https://hub.docker.com/r/jeffdecola/hello-go) on DockerHub.
+
+# REQUIREMENTS
+
+You obviously need
+[concourse](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/operations-tools/continuous-integration-continuous-deployment/concourse-cheat-sheet).
+
+To build you will need,
+
+* DockerHub account
+* For manual testing,
+  [docker](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/operations-tools/orchestration/builds-deployment-containers/docker-cheat-sheet)
+  running on your machine.
+
+To deploy you will need,
+
+* [marathon](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/operations-tools/orchestration/cluster-managers-resource-management-scheduling/marathon-cheat-sheet-sheet)
+* [mesos](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/operations-tools/orchestration/cluster-managers-resource-management-scheduling/mesos-cheat-sheet)
+
+## LONG-RUNNING APP FOR MARATHON
 
 Written in go, every 3 seconds `hello-go` will print:
 
@@ -8,45 +26,91 @@ Written in go, every 3 seconds `hello-go` will print:
 Hello everyone, count is: 1
 Hello everyone, count is: 2
 Hello everyone, count is: 3
-...
+etc...
 ```
 
-`hello-go` shows how a simple "hello-world" program uses Concourse
-to automate the creation and deployment of a Docker Image to Marathon.
-
-The `hello-go` [Docker Image](https://hub.docker.com/r/jeffdecola/hello-go)
-is useful in marathon and mesos testing where a simple long running app is needed.
-
-## MARATHON .json FILE
-
-[_`resource-marathon-deploy`_](https://github.com/JeffDeCola/resource-marathon-deploy)
-uses a Marathon .json file (app.json) to deploys the newly created Docker Image
-(APP) to Marathon.
-
-## RUN
-
-### Run Image from DockerHub
-
-Run in interactive mode so you can `ctrl-c` to stop.
-
-```bash
-docker run -t -i jeffdecola/hello-go
-```
-
-### From the Command Line
+## RUN SOURCE CODE FROM THE COMMAND LINE
 
 ```bash
 go run main.go
 ```
 
-## MANUALLY DEPLOY APP TO MARATHON
+## BUILD - DOCKER IMAGE
 
-`hello-go` Docker Image can be manually deployed to Marathon by using the command:
+Create a binary `hello-go`,
 
 ```bash
-curl -X PUT http://10.141.141.10:8080/v2/apps/yeah22 -d @app.json -H
-"Content-type: application/json"
+go build -o hello-go main.go
 ```
+
+Grab the Dockerfile to put in this directory,
+
+```bash
+cp ci/Dockerfile .
+```
+
+Build your docker image using Dockerfile,
+
+```bash
+docker build -t jeffdecola/hello-go .
+```
+
+Obviously, replace `jeffdecola` with your DockerHub username.
+
+Check your docker images,
+
+```bash
+docker images
+```
+
+It will be listed as `jeffdecola/hello-go`
+
+## BUILD - PUSH DOCKER IMAGE TO DOCKER HUB
+
+Push to your newly built docker image to DockerHub.
+
+```bash
+docker login
+docker push jeffdecola/hello-go
+```
+
+Check you image at DockerHub. My image is
+[https://hub.docker.com/r/jeffdecola/hello-go](https://hub.docker.com/r/jeffdecola/hello-go).
+
+Once image is is on DockerHub, you can run in interactive mode (-i)
+so you can `ctrl-c` to stop.
+
+Erase your local image first to prove it grabs it from dockerhub,
+
+```bash
+docker rmi jeffdecola/hello-go
+```
+
+Now run it. Docker will grab the image from dockerHub
+and start a docker container on your machine.
+
+```bash
+docker run -t -i jeffdecola/hello-go
+```
+
+## DEPLOY - APP TO MARATHON
+
+The marathon .json file,
+
+[_`resource-marathon-deploy`_](https://github.com/JeffDeCola/resource-marathon-deploy)
+uses a Marathon .json file (app.json) to deploys the newly created docker image
+(APP) to Marathon.
+
+The `hello-go` docker image can now be manually deployed from
+DockerHub to mesos/marathon by using the command:
+
+```bash
+curl -X PUT http://10.141.141.10:8080/v2/apps/hello-go-long-running -d @app.json \
+-H "Content-type: application/json"
+```
+
+The `app.json` file will pick the latest image a DockerHub
+`jeffdecola/hello-go:latest`.
 
 ## TESTED, BUILT & PUSHED TO DOCKERHUB USING CONCOURSE
 
