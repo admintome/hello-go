@@ -117,10 +117,10 @@ The `app.json` file will pick the latest image a DockerHub
 To automate the creation of the `hello-go` docker image, a concourse pipeline
 will,
 
-* Update github webpage.
-* Unit test.
-* Build the docker image.
-* Push the docker image to DockerHub.
+* Update README.md for hello-go github webpage.
+* Unit Test the code.
+* Build the docker image `hello-go` and push to DockerHub.
+* Deploy the DockerHub image to mesos/marathon.
 
 ![IMAGE - hello-go concourse ci pipeline - IMAGE](pics/hello-go-pipeline.jpg)
 
