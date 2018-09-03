@@ -1,6 +1,4 @@
 
-[hello-go Docker Image](https://hub.docker.com/r/jeffdecola/hello-go) on DockerHub.
-
 # REQUIREMENTS
 
 You obviously need
