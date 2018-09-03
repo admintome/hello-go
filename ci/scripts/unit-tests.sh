@@ -4,6 +4,7 @@
 set -e -x
 
 # The code is located in /hello-go
+# /coverage-results already created becasue of yml file
 echo "pwd is: " $PWD
 echo "List whats in the current directory"
 ls -lat 
@@ -24,6 +25,7 @@ ls -lat
 # RUN unit_tests and it shows the percentage coverage
 # print to stdout and file using tee
 go test -cover ./... | tee test_coverage.txt
+
 # add some whitespace to the begining of each line
 sed -i -e 's/^/     /' test_coverage.txt
 
