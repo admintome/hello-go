@@ -9,9 +9,9 @@
 `hello-go` _uses concourse to test, build, push (to DockerHub) and
 deploy a long running "hello-world" docker image to mesos/marathon._
 
-[hello-go GitHub Webpage](https://jeffdecola.github.io/hello-go/)
-
 [hello-go Docker Image](https://hub.docker.com/r/jeffdecola/hello-go) on DockerHub.
+
+[hello-go GitHub Webpage](https://jeffdecola.github.io/hello-go/)
 
 ## REQUIREMENTS
 
